@@ -1,0 +1,10 @@
+GET http://localhost:7070 HTTP/1.1
+###
+POST http://localhost:7070 HTTP/1.1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"Hello",
+    "lastname":"Abdurasulov",
+    "email":"hasanbojabdurasulov309@gmail.com"
+}
