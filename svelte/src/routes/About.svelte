@@ -6,17 +6,8 @@
     let lastname;
     let email;
     function click() {
-        if (
-            name !== undefined &&
-            lastname !== undefined &&
-            email !== undefined
-        ) {
-            const user = { name, lastname, email };
-            axios.post("http://localhost:7070", user);
-        } else {
-            const user = { name, lastname, email };
-            axios.post("http://localhost:7070", user);
-        }
+        const user = { name, lastname, email };
+        axios.post("http://localhost:7070", user)
     }
 </script>
 
@@ -36,11 +27,7 @@
                                     Sign up
                                 </p>
 
-                                <form
-                                    class="mx-1 mx-md-4"
-                                    action="http://localhost:7070"
-                                    method="post"
-                                >
+                                <form class="mx-1 mx-md-4">
                                     <div
                                         class="d-flex flex-row align-items-center mb-4"
                                     >
@@ -60,29 +47,6 @@
                                                 class="form-label"
                                                 for="form3Example1c"
                                                 >Your Name</label
-                                            >
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="d-flex flex-row align-items-center mb-4"
-                                    >
-                                        <i
-                                            class="fas fa-envelope fa-lg me-3 fa-fw"
-                                        />
-                                        <div
-                                            class="form-outline flex-fill mb-0"
-                                        >
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                id="form3Example3c"
-                                                class="form-control"
-                                            />
-                                            <label
-                                                class="form-label"
-                                                for="form3Example3c"
-                                                >Your Email</label
                                             >
                                         </div>
                                     </div>
@@ -109,15 +73,39 @@
                                         </div>
                                     </div>
                                     <div
+                                        class="d-flex flex-row align-items-center mb-4"
+                                    >
+                                        <i
+                                            class="fas fa-envelope fa-lg me-3 fa-fw"
+                                        />
+                                        <div
+                                            class="form-outline flex-fill mb-0"
+                                        >
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                id="form3Example3c"
+                                                class="form-control"
+                                            />
+                                            <label
+                                                class="form-label"
+                                                for="form3Example3c"
+                                                >Your Email</label
+                                            >
+                                        </div>
+                                    </div>
+                                    <div
                                         class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
                                     >
-                                        <button
-                                            type="submit"
-                                            class="btn btn-primary btn-lg"
-                                            on:click={alert("Hello World")}
-                                        >
-                                            Register
-                                        </button>
+                                        <Link to='/'>
+                                            <button
+                                                type="submit"
+                                                class="btn btn-primary btn-lg"
+                                                on:click={() => click()}
+                                            >
+                                                Register
+                                            </button>
+                                        </Link>
                                     </div>
                                 </form>
                             </div>
@@ -137,4 +125,4 @@
         </div>
     </div>
 </section>
-<div><Route path="Home" component={Home} /></div>
+<div><Route path="/" component={Home} /></div>

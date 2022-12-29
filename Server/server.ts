@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express"
+import express, { Request, response, Response } from "express"
 import cors from "cors"
 const server = express()
 server.use(cors())
@@ -21,6 +21,17 @@ server.post("/", async (req: Request, res: Response) => {
         const { name, lastname, email } = req.body
         await pool.query(`INSERT INTO users (name,lastname,email) VALUES ($1,$2,$3)`, [name, lastname, email])
         res.status(201).json({ message: "Your Data has Created" })
+    } catch (error: any) {
+        res.status(500).json({ message: error.message })
+    }
+})
+// 
+server.post("/:id", async (req: Request, res: Response) => {
+    try {
+        await pool.query(`DELETE  FROM users WHERE id = $1`, [req.params.id])
+        const users = await pool.query(`SELECT * FROM users`)
+        res.status(200).json({ message: users })
+        console.log(req.params.id)
     } catch (error: any) {
         res.status(500).json({ message: error.message })
     }
